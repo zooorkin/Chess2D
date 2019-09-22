@@ -1,0 +1,16 @@
+PODS:
+  - SwiftChess (1.1)
+
+DEPENDENCIES:
+  - SwiftChess (~> 1.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SwiftChess
+
+SPEC CHECKSUMS:
+  SwiftChess: 01a5b1d72ec80086d2eda5627d34d37213264315
+
+PODFILE CHECKSUM: ef42dd52e61d6a703ee081ec17b494370d84cd34
+
+COCOAPODS: 1.7.3

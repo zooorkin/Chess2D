@@ -1,0 +1,9 @@
+build/
+DerivedData/
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+.DS_Store
+*.xcuserdatad
+*.xcuserstate
+IDEWorkspaceChecks.plist

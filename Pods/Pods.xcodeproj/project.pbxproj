@@ -1,0 +1,691 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		032F99590718220ED6E2BF2E29A1BC65 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911CED82477E8BE797EDFCA5916F4D51 /* Game.swift */; };
+		07951F733C3B37E4235251CFE01B20FA /* BoardRaterCenterOwnership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84965D090F68B70634A6A68F82732269 /* BoardRaterCenterOwnership.swift */; };
+		08318E52C477D7C6F47C70D44CCF358C /* AIPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEB07AD2F469CE79DFF487A708D3A83 /* AIPlayer.swift */; };
+		14CC5B38422DA5336D1E3906C50B0A49 /* SwiftChess-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D758D70391051A0CDF7932F72AE623BE /* SwiftChess-dummy.m */; };
+		1A64CC6C0133324D890598EB747EAD95 /* SwiftChess-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EFC061EF6956608F4206BD27B2A11047 /* SwiftChess-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FB293A2048576C450CF20384FCDE282 /* BoardRaterCountPieces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439CD6B16EDA6AEC9B7CE983BCDC418C /* BoardRaterCountPieces.swift */; };
+		24EB51DB1C155AC322FDF9EC89780AEF /* BoardRaterPawnProgression.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B203A9BDB58353CD03D626010CD94B /* BoardRaterPawnProgression.swift */; };
+		2DBF9E96402E6E6FCB64D935AB9D096A /* Opening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E18883401E1A02754D707C50B166C3A /* Opening.swift */; };
+		2ED9835AF4746506C0136B52CCD2A91D /* BoardRaterBoardDominance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975FE9E87EC9BCF56355F4111EE92DDF /* BoardRaterBoardDominance.swift */; };
+		33D6DC6E229CE0A82D330E4B31836AC2 /* PieceMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4EB15972C86AFC6CF151EBF755EA1B /* PieceMovement.swift */; };
+		435260E8650EDE8A760B1FEDD69EFB00 /* BoardRaterCenterDominance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9545C769139C132D4EF8C5E73E31581A /* BoardRaterCenterDominance.swift */; };
+		4B535973ACFD5393DC38026AE8147267 /* BoardRaterCenterFourOccupation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3056554C4A1B8D70F609ECFF069A60C3 /* BoardRaterCenterFourOccupation.swift */; };
+		5AD2EDA2EF285C521D2A2354D55D7B0C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		685D4221696D24C4184D56FDF2AE2D04 /* ASCIIBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6C30797A8E649D78D6D24DBCAE80F0 /* ASCIIBoard.swift */; };
+		733241863524A5C7D0D5C668C14F00FE /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66537E81215A378C71F34F826DE44AB /* Piece.swift */; };
+		806BAA47956B98F4728B216EFC38BA61 /* Pods-Chess2D-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2477DBEBB8EC7A36A0E98F4AC61ECBEF /* Pods-Chess2D-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8D7C767EA79963DC5FA779D602E84B91 /* BoardOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D203F9B0616CDE24C8B4DF07C19B77F /* BoardOperation.swift */; };
+		924D82ABE741985DA0062519E5172CCD /* BoardLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141A9A54A4B16D544407499A2154D036 /* BoardLocation.swift */; };
+		9A4CD57AA29F4BC50FF12A4C39C4553D /* AIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448D7780F1D6AD2C3EDED43D73D20587 /* AIConfiguration.swift */; };
+		9E09456BECD31A7AD5B9557E9C7BD81A /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA191D040605AECAD2D323D9B76FA05B /* Human.swift */; };
+		AE9A27C3F32919ABAB47585F133EFF10 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B8DC50591316B099B89F847858F9DD /* Board.swift */; };
+		BCEB04381EE801CA530F51908D17E083 /* BoardRaterThreatenedPieces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8F9E861A47F9CCA607E18D3BA5A878 /* BoardRaterThreatenedPieces.swift */; };
+		C09C81254E385E368D19C8C7DC1B7B0B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719365E6511A48DFA4DEBB95B78A1645 /* Player.swift */; };
+		CC7EDFBE5DF65D8687A707DC8F0979F9 /* Pods-Chess2D-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AD195214921DA9789956DC03AACE6A37 /* Pods-Chess2D-dummy.m */; };
+		CEF78D31A91C95AF4F33608A340FE36F /* BoardStride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5731843CDF31139EB83E0DED43B22BE6 /* BoardStride.swift */; };
+		E43CC6D337AF76417C8EDC571131FC43 /* BoardRaterCheckMateOpportunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED367E1D6B9E474ADE0C3F0293D050 /* BoardRaterCheckMateOpportunity.swift */; };
+		F014835AFD66CE4D457DCAC0416EC912 /* DictionaryRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68156A917A791F6A9960985B051688C9 /* DictionaryRepresentable.swift */; };
+		FC63F7DF7DD2C0076CF86D23F9C837B2 /* BoardRaterKingSurroundingPossession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EF9E0C2D3733EB6937338ECEF5963C /* BoardRaterKingSurroundingPossession.swift */; };
+		FFF0B0F7E572E7BA115D0E866A4F5422 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0D77213F241987AD981CB180631F2DB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 81B8E6180C048A8E245031ACED259EDB;
+			remoteInfo = SwiftChess;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		141A9A54A4B16D544407499A2154D036 /* BoardLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BoardLocation.swift; path = SwiftChess/Source/BoardLocation.swift; sourceTree = "<group>"; };
+		1EEB07AD2F469CE79DFF487A708D3A83 /* AIPlayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AIPlayer.swift; path = SwiftChess/Source/AIPlayer.swift; sourceTree = "<group>"; };
+		2477DBEBB8EC7A36A0E98F4AC61ECBEF /* Pods-Chess2D-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Chess2D-umbrella.h"; sourceTree = "<group>"; };
+		3056554C4A1B8D70F609ECFF069A60C3 /* BoardRaterCenterFourOccupation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BoardRaterCenterFourOccupation.swift; path = SwiftChess/Source/BoardRaterCenterFourOccupation.swift; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		372DA458E05642A5FA7DC826EC688EE9 /* Pods-Chess2D-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Chess2D-acknowledgements.plist"; sourceTree = "<group>"; };
+		37EE8186622FBD0E70449D354638917A /* Pods-Chess2D-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Chess2D-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3D6C30797A8E649D78D6D24DBCAE80F0 /* ASCIIBoard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ASCIIBoard.swift; path = SwiftChess/Source/ASCIIBoard.swift; sourceTree = "<group>"; };
+		439CD6B16EDA6AEC9B7CE983BCDC418C /* BoardRaterCountPieces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BoardRaterCountPieces.swift; path = SwiftChess/Source/BoardRaterCountPieces.swift; sourceTree = "<group>"; };
+		448D7780F1D6AD2C3EDED43D73D20587 /* AIConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AIConfiguration.swift; path = SwiftChess/Source/AIConfiguration.swift; sourceTree = "<group>"; };
+		45ED367E1D6B9E474ADE0C3F0293D050 /* BoardRaterCheckMateOpportunity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BoardRaterCheckMateOpportunity.swift; path = SwiftChess/Source/BoardRaterCheckMateOpportunity.swift; sourceTree = "<group>"; };
+		4D43F6B43B28663D053EE20F609620C1 /* SwiftChess-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftChess-Info.plist"; sourceTree = "<group>"; };
+		50B8DC50591316B099B89F847858F9DD /* Board.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Board.swift; path = SwiftChess/Source/Board.swift; sourceTree = "<group>"; };
+		5731843CDF31139EB83E0DED43B22BE6 /* BoardStride.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BoardStride.swift; path = SwiftChess/Source/BoardStride.swift; sourceTree = "<group>"; };
+		5ECE48D38B49849FFE7EA2CC517117A8 /* SwiftChess-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftChess-prefix.pch"; sourceTree = "<group>"; };
+		68156A917A791F6A9960985B051688C9 /* DictionaryRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DictionaryRepresentable.swift; path = SwiftChess/Source/Extensions/DictionaryRepresentable.swift; sourceTree = "<group>"; };
+		6E18883401E1A02754D707C50B166C3A /* Opening.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Opening.swift; path = SwiftChess/Source/Opening.swift; sourceTree = "<group>"; };
+		6F08ACB384AA54C6EB0D9B66061B39A0 /* SwiftChess.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftChess.xcconfig; sourceTree = "<group>"; };
+		6F8F9E861A47F9CCA607E18D3BA5A878 /* BoardRaterThreatenedPieces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BoardRaterThreatenedPieces.swift; path = SwiftChess/Source/BoardRaterThreatenedPieces.swift; sourceTree = "<group>"; };
+		719365E6511A48DFA4DEBB95B78A1645 /* Player.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Player.swift; path = SwiftChess/Source/Player.swift; sourceTree = "<group>"; };
+		76A2B28EF36531B1BB93DBA60E405055 /* Pods-Chess2D-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Chess2D-Info.plist"; sourceTree = "<group>"; };
+		7D203F9B0616CDE24C8B4DF07C19B77F /* BoardOperation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BoardOperation.swift; path = SwiftChess/Source/BoardOperation.swift; sourceTree = "<group>"; };
+		84965D090F68B70634A6A68F82732269 /* BoardRaterCenterOwnership.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BoardRaterCenterOwnership.swift; path = SwiftChess/Source/BoardRaterCenterOwnership.swift; sourceTree = "<group>"; };
+		89EF9E0C2D3733EB6937338ECEF5963C /* BoardRaterKingSurroundingPossession.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BoardRaterKingSurroundingPossession.swift; path = SwiftChess/Source/BoardRaterKingSurroundingPossession.swift; sourceTree = "<group>"; };
+		911CED82477E8BE797EDFCA5916F4D51 /* Game.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Game.swift; path = SwiftChess/Source/Game.swift; sourceTree = "<group>"; };
+		9545C769139C132D4EF8C5E73E31581A /* BoardRaterCenterDominance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BoardRaterCenterDominance.swift; path = SwiftChess/Source/BoardRaterCenterDominance.swift; sourceTree = "<group>"; };
+		975FE9E87EC9BCF56355F4111EE92DDF /* BoardRaterBoardDominance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BoardRaterBoardDominance.swift; path = SwiftChess/Source/BoardRaterBoardDominance.swift; sourceTree = "<group>"; };
+		9995687B1199C0D24EE1687F44B05520 /* Pods-Chess2D.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Chess2D.modulemap"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A0B2A416BE2178356B0174BE53D6A3C2 /* Pods_Chess2D.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Chess2D.framework; path = "Pods-Chess2D.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A66537E81215A378C71F34F826DE44AB /* Piece.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Piece.swift; path = SwiftChess/Source/Piece.swift; sourceTree = "<group>"; };
+		A769C7E2163B923F810BB88AEEB1DB4C /* Pods-Chess2D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Chess2D.release.xcconfig"; sourceTree = "<group>"; };
+		AD195214921DA9789956DC03AACE6A37 /* Pods-Chess2D-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Chess2D-dummy.m"; sourceTree = "<group>"; };
+		AFDACA5D1F947E73B561AF03FABCCDDA /* SwiftChess.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftChess.modulemap; sourceTree = "<group>"; };
+		B0F5A8E044A16A561C31D1543004F562 /* Pods-Chess2D.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Chess2D.debug.xcconfig"; sourceTree = "<group>"; };
+		B9FA0EC39C0229BF76A765E5DD0E5B49 /* SwiftChess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftChess.framework; path = SwiftChess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA191D040605AECAD2D323D9B76FA05B /* Human.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Human.swift; path = SwiftChess/Source/Human.swift; sourceTree = "<group>"; };
+		C422DBA583CE8E414794E6281A87D7FD /* Pods-Chess2D-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Chess2D-frameworks.sh"; sourceTree = "<group>"; };
+		D758D70391051A0CDF7932F72AE623BE /* SwiftChess-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftChess-dummy.m"; sourceTree = "<group>"; };
+		DC4EB15972C86AFC6CF151EBF755EA1B /* PieceMovement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieceMovement.swift; path = SwiftChess/Source/PieceMovement.swift; sourceTree = "<group>"; };
+		E3B203A9BDB58353CD03D626010CD94B /* BoardRaterPawnProgression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BoardRaterPawnProgression.swift; path = SwiftChess/Source/BoardRaterPawnProgression.swift; sourceTree = "<group>"; };
+		EFC061EF6956608F4206BD27B2A11047 /* SwiftChess-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftChess-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		58A64BD2D3A0105568C9872997A21BF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AD2EDA2EF285C521D2A2354D55D7B0C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4027AB041267B3A4EF1D00E094B4F28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFF0B0F7E572E7BA115D0E866A4F5422 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1695A28058CFD7AF23487D70A966EF0F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				556451FFD4AD558305BC50BBDA5CFE04 /* SwiftChess */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4B978B21BDB2A7B97BD4EAC241B4FC9E /* Pods-Chess2D */ = {
+			isa = PBXGroup;
+			children = (
+				9995687B1199C0D24EE1687F44B05520 /* Pods-Chess2D.modulemap */,
+				37EE8186622FBD0E70449D354638917A /* Pods-Chess2D-acknowledgements.markdown */,
+				372DA458E05642A5FA7DC826EC688EE9 /* Pods-Chess2D-acknowledgements.plist */,
+				AD195214921DA9789956DC03AACE6A37 /* Pods-Chess2D-dummy.m */,
+				C422DBA583CE8E414794E6281A87D7FD /* Pods-Chess2D-frameworks.sh */,
+				76A2B28EF36531B1BB93DBA60E405055 /* Pods-Chess2D-Info.plist */,
+				2477DBEBB8EC7A36A0E98F4AC61ECBEF /* Pods-Chess2D-umbrella.h */,
+				B0F5A8E044A16A561C31D1543004F562 /* Pods-Chess2D.debug.xcconfig */,
+				A769C7E2163B923F810BB88AEEB1DB4C /* Pods-Chess2D.release.xcconfig */,
+			);
+			name = "Pods-Chess2D";
+			path = "Target Support Files/Pods-Chess2D";
+			sourceTree = "<group>";
+		};
+		4C808B00AFD256206BED681A5426F3F2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A0B2A416BE2178356B0174BE53D6A3C2 /* Pods_Chess2D.framework */,
+				B9FA0EC39C0229BF76A765E5DD0E5B49 /* SwiftChess.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		556451FFD4AD558305BC50BBDA5CFE04 /* SwiftChess */ = {
+			isa = PBXGroup;
+			children = (
+				448D7780F1D6AD2C3EDED43D73D20587 /* AIConfiguration.swift */,
+				1EEB07AD2F469CE79DFF487A708D3A83 /* AIPlayer.swift */,
+				3D6C30797A8E649D78D6D24DBCAE80F0 /* ASCIIBoard.swift */,
+				50B8DC50591316B099B89F847858F9DD /* Board.swift */,
+				141A9A54A4B16D544407499A2154D036 /* BoardLocation.swift */,
+				7D203F9B0616CDE24C8B4DF07C19B77F /* BoardOperation.swift */,
+				975FE9E87EC9BCF56355F4111EE92DDF /* BoardRaterBoardDominance.swift */,
+				9545C769139C132D4EF8C5E73E31581A /* BoardRaterCenterDominance.swift */,
+				3056554C4A1B8D70F609ECFF069A60C3 /* BoardRaterCenterFourOccupation.swift */,
+				84965D090F68B70634A6A68F82732269 /* BoardRaterCenterOwnership.swift */,
+				45ED367E1D6B9E474ADE0C3F0293D050 /* BoardRaterCheckMateOpportunity.swift */,
+				439CD6B16EDA6AEC9B7CE983BCDC418C /* BoardRaterCountPieces.swift */,
+				89EF9E0C2D3733EB6937338ECEF5963C /* BoardRaterKingSurroundingPossession.swift */,
+				E3B203A9BDB58353CD03D626010CD94B /* BoardRaterPawnProgression.swift */,
+				6F8F9E861A47F9CCA607E18D3BA5A878 /* BoardRaterThreatenedPieces.swift */,
+				5731843CDF31139EB83E0DED43B22BE6 /* BoardStride.swift */,
+				68156A917A791F6A9960985B051688C9 /* DictionaryRepresentable.swift */,
+				911CED82477E8BE797EDFCA5916F4D51 /* Game.swift */,
+				BA191D040605AECAD2D323D9B76FA05B /* Human.swift */,
+				6E18883401E1A02754D707C50B166C3A /* Opening.swift */,
+				A66537E81215A378C71F34F826DE44AB /* Piece.swift */,
+				DC4EB15972C86AFC6CF151EBF755EA1B /* PieceMovement.swift */,
+				719365E6511A48DFA4DEBB95B78A1645 /* Player.swift */,
+				F19F055F352D34599376AECBEA91AA67 /* Support Files */,
+			);
+			name = SwiftChess;
+			path = SwiftChess;
+			sourceTree = "<group>";
+		};
+		5C19F002A7D7A6DE9EE50FB28473765A /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4B978B21BDB2A7B97BD4EAC241B4FC9E /* Pods-Chess2D */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				1695A28058CFD7AF23487D70A966EF0F /* Pods */,
+				4C808B00AFD256206BED681A5426F3F2 /* Products */,
+				5C19F002A7D7A6DE9EE50FB28473765A /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F19F055F352D34599376AECBEA91AA67 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AFDACA5D1F947E73B561AF03FABCCDDA /* SwiftChess.modulemap */,
+				6F08ACB384AA54C6EB0D9B66061B39A0 /* SwiftChess.xcconfig */,
+				D758D70391051A0CDF7932F72AE623BE /* SwiftChess-dummy.m */,
+				4D43F6B43B28663D053EE20F609620C1 /* SwiftChess-Info.plist */,
+				5ECE48D38B49849FFE7EA2CC517117A8 /* SwiftChess-prefix.pch */,
+				EFC061EF6956608F4206BD27B2A11047 /* SwiftChess-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftChess";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6AB8630799DB95CA18505945221E1AAA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A64CC6C0133324D890598EB747EAD95 /* SwiftChess-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8FF86923D6C9DF81D5AC43878722BBC1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				806BAA47956B98F4728B216EFC38BA61 /* Pods-Chess2D-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		81B8E6180C048A8E245031ACED259EDB /* SwiftChess */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81EE3B321E1A94EE1CC14C4635663E18 /* Build configuration list for PBXNativeTarget "SwiftChess" */;
+			buildPhases = (
+				6AB8630799DB95CA18505945221E1AAA /* Headers */,
+				82179B279F0763505E4E0267F48E0C54 /* Sources */,
+				C4027AB041267B3A4EF1D00E094B4F28 /* Frameworks */,
+				A9119BE60AC13F166215B28AC38E1035 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftChess;
+			productName = SwiftChess;
+			productReference = B9FA0EC39C0229BF76A765E5DD0E5B49 /* SwiftChess.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		92FA99EA9806F8838EBF391EE7F770FB /* Pods-Chess2D */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B66172201E5877D4ADBC8730BDB1212 /* Build configuration list for PBXNativeTarget "Pods-Chess2D" */;
+			buildPhases = (
+				8FF86923D6C9DF81D5AC43878722BBC1 /* Headers */,
+				E209E0ECC30A789AFB7D7B83B43FE50C /* Sources */,
+				58A64BD2D3A0105568C9872997A21BF5 /* Frameworks */,
+				5B1EEB309B112D587A37722D69DA9C85 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE3A85EEA3D6105B5E7850E44931427F /* PBXTargetDependency */,
+			);
+			name = "Pods-Chess2D";
+			productName = "Pods-Chess2D";
+			productReference = A0B2A416BE2178356B0174BE53D6A3C2 /* Pods_Chess2D.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 4C808B00AFD256206BED681A5426F3F2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				92FA99EA9806F8838EBF391EE7F770FB /* Pods-Chess2D */,
+				81B8E6180C048A8E245031ACED259EDB /* SwiftChess */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5B1EEB309B112D587A37722D69DA9C85 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9119BE60AC13F166215B28AC38E1035 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		82179B279F0763505E4E0267F48E0C54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A4CD57AA29F4BC50FF12A4C39C4553D /* AIConfiguration.swift in Sources */,
+				08318E52C477D7C6F47C70D44CCF358C /* AIPlayer.swift in Sources */,
+				685D4221696D24C4184D56FDF2AE2D04 /* ASCIIBoard.swift in Sources */,
+				AE9A27C3F32919ABAB47585F133EFF10 /* Board.swift in Sources */,
+				924D82ABE741985DA0062519E5172CCD /* BoardLocation.swift in Sources */,
+				8D7C767EA79963DC5FA779D602E84B91 /* BoardOperation.swift in Sources */,
+				2ED9835AF4746506C0136B52CCD2A91D /* BoardRaterBoardDominance.swift in Sources */,
+				435260E8650EDE8A760B1FEDD69EFB00 /* BoardRaterCenterDominance.swift in Sources */,
+				4B535973ACFD5393DC38026AE8147267 /* BoardRaterCenterFourOccupation.swift in Sources */,
+				07951F733C3B37E4235251CFE01B20FA /* BoardRaterCenterOwnership.swift in Sources */,
+				E43CC6D337AF76417C8EDC571131FC43 /* BoardRaterCheckMateOpportunity.swift in Sources */,
+				1FB293A2048576C450CF20384FCDE282 /* BoardRaterCountPieces.swift in Sources */,
+				FC63F7DF7DD2C0076CF86D23F9C837B2 /* BoardRaterKingSurroundingPossession.swift in Sources */,
+				24EB51DB1C155AC322FDF9EC89780AEF /* BoardRaterPawnProgression.swift in Sources */,
+				BCEB04381EE801CA530F51908D17E083 /* BoardRaterThreatenedPieces.swift in Sources */,
+				CEF78D31A91C95AF4F33608A340FE36F /* BoardStride.swift in Sources */,
+				F014835AFD66CE4D457DCAC0416EC912 /* DictionaryRepresentable.swift in Sources */,
+				032F99590718220ED6E2BF2E29A1BC65 /* Game.swift in Sources */,
+				9E09456BECD31A7AD5B9557E9C7BD81A /* Human.swift in Sources */,
+				2DBF9E96402E6E6FCB64D935AB9D096A /* Opening.swift in Sources */,
+				733241863524A5C7D0D5C668C14F00FE /* Piece.swift in Sources */,
+				33D6DC6E229CE0A82D330E4B31836AC2 /* PieceMovement.swift in Sources */,
+				C09C81254E385E368D19C8C7DC1B7B0B /* Player.swift in Sources */,
+				14CC5B38422DA5336D1E3906C50B0A49 /* SwiftChess-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E209E0ECC30A789AFB7D7B83B43FE50C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC7EDFBE5DF65D8687A707DC8F0979F9 /* Pods-Chess2D-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FE3A85EEA3D6105B5E7850E44931427F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftChess;
+			target = 81B8E6180C048A8E245031ACED259EDB /* SwiftChess */;
+			targetProxy = 0D77213F241987AD981CB180631F2DB8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1A77ECA9DCAA0208768D1997FF2C8300 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F08ACB384AA54C6EB0D9B66061B39A0 /* SwiftChess.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftChess/SwiftChess-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftChess/SwiftChess-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftChess/SwiftChess.modulemap";
+				PRODUCT_MODULE_NAME = SwiftChess;
+				PRODUCT_NAME = SwiftChess;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		204B8AEA4AE90A551A1768B355C2F9F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		3CCC6195EDBEE5DA2A49DF962113BE16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		6743E259FB3309D3908F663C30064BED /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A769C7E2163B923F810BB88AEEB1DB4C /* Pods-Chess2D.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Chess2D/Pods-Chess2D-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Chess2D/Pods-Chess2D.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8BCD48271DB0D31F6F64E11955638AEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0F5A8E044A16A561C31D1543004F562 /* Pods-Chess2D.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Chess2D/Pods-Chess2D-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Chess2D/Pods-Chess2D.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A6FB42AA78F9ADBCEB6B83B377B758AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F08ACB384AA54C6EB0D9B66061B39A0 /* SwiftChess.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftChess/SwiftChess-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftChess/SwiftChess-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftChess/SwiftChess.modulemap";
+				PRODUCT_MODULE_NAME = SwiftChess;
+				PRODUCT_NAME = SwiftChess;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				204B8AEA4AE90A551A1768B355C2F9F0 /* Debug */,
+				3CCC6195EDBEE5DA2A49DF962113BE16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B66172201E5877D4ADBC8730BDB1212 /* Build configuration list for PBXNativeTarget "Pods-Chess2D" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BCD48271DB0D31F6F64E11955638AEC /* Debug */,
+				6743E259FB3309D3908F663C30064BED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81EE3B321E1A94EE1CC14C4635663E18 /* Build configuration list for PBXNativeTarget "SwiftChess" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A77ECA9DCAA0208768D1997FF2C8300 /* Debug */,
+				A6FB42AA78F9ADBCEB6B83B377B758AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

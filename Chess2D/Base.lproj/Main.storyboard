@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad10_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Chess View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ChessViewController" customModule="Chess2D" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8AL-Ky-xh4">
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cor-Vx-2r4" userLabel="board">
+                                <rect key="frame" x="48" y="187" width="738" height="738"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cor-Vx-2r4" secondAttribute="height" multiplier="1:1" id="1vq-j2-q6D"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9H-vK-Dm1" userLabel="ABCView">
+                                <rect key="frame" x="48" y="925" width="738" height="64"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="H2V-Of-Mw5"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRx-z6-SPG" userLabel="HGFView">
+                                <rect key="frame" x="48" y="123" width="738" height="64"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="Uiw-Hg-sce"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pew-Fn-TLh" userLabel="876View">
+                                <rect key="frame" x="786" y="187" width="48" height="738"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pOu-cS-crv" userLabel="123View">
+                                <rect key="frame" x="0.0" y="187" width="48" height="738"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAW-AO-Mz0">
+                                <rect key="frame" x="97" y="1031" width="88" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Новая игра">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="newGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hEO-Ox-nOY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iq-Ve-hxp">
+                                <rect key="frame" x="193" y="1031" width="99" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Очистить">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ge6-IM-rja"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsm-iT-vW1">
+                                <rect key="frame" x="300" y="1039" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="plusAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AKZ-qA-rbf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cor-Vx-2r4" firstAttribute="leading" secondItem="pOu-cS-crv" secondAttribute="trailing" id="88F-5Q-9aS"/>
+                            <constraint firstItem="pew-Fn-TLh" firstAttribute="centerY" secondItem="8AL-Ky-xh4" secondAttribute="centerY" id="EfB-yy-2co"/>
+                            <constraint firstItem="pOu-cS-crv" firstAttribute="height" secondItem="cor-Vx-2r4" secondAttribute="height" id="Gqg-Qk-dci"/>
+                            <constraint firstItem="pOu-cS-crv" firstAttribute="leading" secondItem="8AL-Ky-xh4" secondAttribute="leading" id="HEZ-Lg-oE2"/>
+                            <constraint firstItem="cor-Vx-2r4" firstAttribute="top" secondItem="gRx-z6-SPG" secondAttribute="bottom" id="Nr8-xR-dFd"/>
+                            <constraint firstItem="pOu-cS-crv" firstAttribute="centerY" secondItem="8AL-Ky-xh4" secondAttribute="centerY" id="UFj-VK-Njp"/>
+                            <constraint firstItem="pew-Fn-TLh" firstAttribute="height" secondItem="cor-Vx-2r4" secondAttribute="height" id="agr-Rp-QbL"/>
+                            <constraint firstItem="gRx-z6-SPG" firstAttribute="leading" secondItem="8AL-Ky-xh4" secondAttribute="leading" constant="48" id="dMf-hT-4fg"/>
+                            <constraint firstAttribute="trailing" secondItem="pew-Fn-TLh" secondAttribute="trailing" id="eIT-pq-rBe"/>
+                            <constraint firstAttribute="trailing" secondItem="W9H-vK-Dm1" secondAttribute="trailing" constant="48" id="ht7-dU-nci"/>
+                            <constraint firstItem="W9H-vK-Dm1" firstAttribute="top" secondItem="cor-Vx-2r4" secondAttribute="bottom" id="huR-gV-v4d"/>
+                            <constraint firstItem="cor-Vx-2r4" firstAttribute="centerY" secondItem="8AL-Ky-xh4" secondAttribute="centerY" id="iWw-Bt-hSN"/>
+                            <constraint firstAttribute="trailing" secondItem="gRx-z6-SPG" secondAttribute="trailing" constant="48" id="lCJ-xy-9Px"/>
+                            <constraint firstItem="cor-Vx-2r4" firstAttribute="leading" secondItem="8AL-Ky-xh4" secondAttribute="leading" constant="48" id="s7h-mQ-Nk8"/>
+                            <constraint firstItem="W9H-vK-Dm1" firstAttribute="leading" secondItem="8AL-Ky-xh4" secondAttribute="leading" constant="48" id="s88-hS-QrN"/>
+                            <constraint firstAttribute="trailing" secondItem="cor-Vx-2r4" secondAttribute="trailing" constant="48" id="tLX-tr-5UY"/>
+                            <constraint firstItem="pew-Fn-TLh" firstAttribute="leading" secondItem="cor-Vx-2r4" secondAttribute="trailing" id="tmQ-9i-4B9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XU0-m4-RxF"/>
+                    </view>
+                    <connections>
+                        <outlet property="boardView" destination="cor-Vx-2r4" id="fOO-Nh-bOA"/>
+                        <outlet property="panel123View" destination="pOu-cS-crv" id="0MS-kU-ZMh"/>
+                        <outlet property="panel876View" destination="pew-Fn-TLh" id="Hbq-fm-clm"/>
+                        <outlet property="panelABCView" destination="W9H-vK-Dm1" id="xtK-vM-FiX"/>
+                        <outlet property="panelHGFView" destination="gRx-z6-SPG" id="Ekf-pB-rjb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="94.964028776978424" y="51.798561151079141"/>
+        </scene>
+    </scenes>
+</document>
