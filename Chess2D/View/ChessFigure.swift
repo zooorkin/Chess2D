@@ -10,10 +10,13 @@ import Foundation
 import UIKit
 
 @IBDesignable
+
 class ChessFigure: UIView{
     
     var typeOfPiece: ChessPieceType?
-    var game: ChessGame?
+    var presenter: IChessPresenter?
+    
+    var chessView: IChessFigureSupport!
     
     var animator: UIDynamicAnimator?
     var attachment: UIAttachmentBehavior?
@@ -104,7 +107,7 @@ class ChessFigure: UIView{
         if !hit {
             return
         }
-        game?.freezeOthers(excluding: pieceTag)
+        //presenter?.freezeOthers(excluding: pieceTag)
         lastTouch = touches.first?.location(in: self)
         loastTouchSuperView = touches.first?.location(in: self.superview)
         if animator != nil, snap != nil{
@@ -135,9 +138,10 @@ class ChessFigure: UIView{
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        if let animator = animator, let game = game {
+        if let animator = animator, let presenter = presenter {
             animator.removeBehavior(attachment!)
-            game.freezeFor(color: color == .white ? .black : .white)
+            // Вроде не нужно
+            //presenter.freezeFor(color: color == .white ? .black : .white)
             let currentTouch = touches.first!.location(in: self.superview)
             let x = self.frame.width / 2 - lastTouch!.x
             let y = self.frame.height / 2 - lastTouch!.y
@@ -146,13 +150,13 @@ class ChessFigure: UIView{
             snap!.damping = 1
             let newPoint = CGPoint(x: currentTouch.x + x, y: currentTouch.y + y)
             
-            snap!.snapPoint = game.getPositionForSnap(point: newPoint)
+            snap!.snapPoint = chessView.getPositionForSnap(point: newPoint)
             animator.addBehavior(snap!)
-            let from_location = game.getCoordinatesForPosition(point: loastTouchSuperView!)
-            let to_location = game.getCoordinatesForPosition(point: newPoint)
+            let from_location = chessView.getCoordinatesForPosition(point: loastTouchSuperView!)
+            let to_location = chessView.getCoordinatesForPosition(point: newPoint)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 500000000)){
                 self.animator?.removeAllBehaviors()
-                self.game?.makeMove(from: from_location, to: to_location)
+                self.presenter?.makeMove(from: from_location, to: to_location)
             }
         }
     }
