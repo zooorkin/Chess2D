@@ -32,7 +32,6 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         self.widthOfCell = boardView.board.frame.width / 8
     }
@@ -47,7 +46,6 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
         
     }
     
-
     public var widthOfCell: CGFloat = 0.0
     public var pieceForTag: [Int: ChessFigure] = [:]
     
@@ -136,6 +134,21 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
     func presenterDidRemovePiece(tag: Int) {
         pieceForTag[tag]?.removeFromSuperview()
         pieceForTag[tag] = nil
+    }
+    
+    func presenterGameWonByPlayer(color: ChessColor) {
+        let text = color == .white ? "Победили белые" : "Победили чёрные"
+        let alertController = UIAlertController(title: "Шах и мат!",
+                                                message: text,
+                                                preferredStyle: .alert)
+        self.present(alertController, animated: true)
+    }
+    
+    func presenterGameEndedInStaleMate() {
+        let alertController = UIAlertController(title: "Пат!",
+                                                message: "Победила дружба",
+                                                preferredStyle: .alert)
+        self.present(alertController, animated: true)
     }
     
     private func getPosition(x: Int, y: Int) -> CGPoint{

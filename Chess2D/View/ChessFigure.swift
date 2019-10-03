@@ -112,7 +112,7 @@ class ChessFigure: UIView{
         if !hit {
             return
         }
-        //presenter?.freezeOthers(excluding: pieceTag)
+        presenter?.freezeOthers(excluding: pieceTag)
         lastTouch = touches.first?.location(in: self)
         loastTouchSuperView = touches.first?.location(in: self.superview)
         if animator != nil, snap != nil{
@@ -143,10 +143,9 @@ class ChessFigure: UIView{
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        if let animator = animator {
+        if let animator = animator, let presenter = presenter {
             animator.removeBehavior(attachment!)
-            // Вроде не нужно
-            //presenter.freezeFor(color: color == .white ? .black : .white)
+            
             let currentTouch = touches.first!.location(in: self.superview)
             let x = self.frame.width / 2 - lastTouch!.x
             let y = self.frame.height / 2 - lastTouch!.y
@@ -159,6 +158,7 @@ class ChessFigure: UIView{
             animator.addBehavior(snap!)
             let from_location = chessView.getCoordinatesForPosition(point: loastTouchSuperView!)
             let to_location = chessView.getCoordinatesForPosition(point: newPoint)
+            presenter.freezeFor(color: color == .white ? .black : .white)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 500000000)){
                 self.animator?.removeAllBehaviors()
                 self.presenter?.makeMove(from: from_location, to: to_location)

@@ -14,6 +14,7 @@ protocol IChessPresenter {
     func endGame()
     func makeMove(from: (x: Int, y: Int), to: (x: Int, y: Int))
     func freezeOthers(excluding: Int)
+    func freezeFor(color: ChessColor)
 }
 
 protocol IChessPresenterDelegate: class {
@@ -24,6 +25,8 @@ protocol IChessPresenterDelegate: class {
     func presenterDidEndGame()
     func presenterDidMovePiece(tag: Int, to: (x: Int, y: Int), animating: Bool)
     func presenterDidRemovePiece(tag: Int)
+    func presenterGameWonByPlayer(color: ChessColor)
+    func presenterGameEndedInStaleMate()
 }
 
 class ChessPresenter: IChessPresenter{
@@ -109,8 +112,8 @@ class ChessPresenter: IChessPresenter{
         }
     }
     
-
 }
+
 
 extension ChessPresenter: IChessModelDelegate {
     func chessModelDidMovePiece(tag: Int, to: (x: Int, y: Int), animating: Bool) {
@@ -123,6 +126,14 @@ extension ChessPresenter: IChessModelDelegate {
     
     func chessModelDidChangePlayer(currentPlayeColor: ChessColor) {
         setCurrentPlayerColor(color: currentPlayeColor)
+    }
+    
+    func chessModelGameWonByPlayer(color: ChessColor) {
+        delegate?.presenterGameWonByPlayer(color: color)
+    }
+    
+    func chessModelGameEndedInStaleMate() {
+        delegate?.presenterGameEndedInStaleMate()
     }
     
 }

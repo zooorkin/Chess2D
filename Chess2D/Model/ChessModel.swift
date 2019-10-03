@@ -22,6 +22,8 @@ protocol IChessModelDelegate: class {
     func chessModelDidMovePiece(tag: Int, to: (x: Int, y: Int), animating: Bool)
     func chessModelDidRemovePiece(tag: Int)
     func chessModelDidChangePlayer(currentPlayeColor: ChessColor)
+    func chessModelGameWonByPlayer(color: ChessColor)
+    func chessModelGameEndedInStaleMate()
 }
 
 class ChessModel: IChessModel, GameDelegate {
@@ -108,23 +110,22 @@ class ChessModel: IChessModel, GameDelegate {
                 delegate?.chessModelDidMovePiece(tag: piece.tag, to: from, animating: true)
                 return
             }
-            switch newLocation.gridPosition {
-            case .g1, .g8:
-                player.performCastleMove(side: .kingSide)
-                break;
-            case .c1, .c8:
-                player.performCastleMove(side: .queenSide)
-                break;
-            default:
-                do {
-                    try player.movePiece(from: currentLocation,
-                                         to: newLocation)
-                }catch {
-                    print("This code wil never be EXECUTED! (?)")
-                    // Запустился
+            
+            if (piece.tag == 5 || piece.tag == 21){
+                switch newLocation.gridPosition {
+                case .g1, .g8: player.performCastleMove(side: .kingSide)
+                case .c1, .c8: player.performCastleMove(side: .queenSide)
+                default: break
                 }
             }
+            do {
+                try player.movePiece(from: currentLocation, to: newLocation)
+            }catch {
+                // Когда при шахе в possibleLocations есть неверные возможные ходы
+                delegate?.chessModelDidMovePiece(tag: piece.tag, to: from, animating: true)
+            }
         }
+        
         if let player =  game.currentPlayer as? AIPlayer {
             player.makeMoveAsync()
         }
@@ -143,6 +144,7 @@ class ChessModel: IChessModel, GameDelegate {
     }
     
     func promotedTypeForPawn(location: BoardLocation, player: Human, possiblePromotions: [Piece.PieceType], callback: @escaping (Piece.PieceType) -> Void) {
+        callback(.queen)
         print("A pawn was promoted!")
     }
     
@@ -166,10 +168,13 @@ class ChessModel: IChessModel, GameDelegate {
     }
     
     func gameWonByPlayer(game: Game, player: Player) {
+        let color = player.color == .black ? ChessColor.black : .white
+        delegate?.chessModelGameWonByPlayer(color: color)
         print("Checkmate!")
     }
     
     func gameEndedInStaleMate(game: Game) {
+        delegate?.chessModelGameEndedInStaleMate()
         print("Stalemate!")
     }
     
