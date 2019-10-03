@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2349414E5CF0C9A2CBB270CA /* Pods_Chess2D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210A980CFDAB55F3D08319D1 /* Pods_Chess2D.framework */; };
+		885B3C46233D330F00264145 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B3C45233D330F00264145 /* BoardView.swift */; };
+		885B3C48233D33AC00264145 /* BoardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 885B3C47233D33AC00264145 /* BoardView.xib */; };
+		885B3C4A233D462800264145 /* ChessFigure.xib in Resources */ = {isa = PBXBuildFile; fileRef = 885B3C49233D462800264145 /* ChessFigure.xib */; };
+		885B3C4C233D4F0F00264145 /* DesignView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885B3C4B233D4F0F00264145 /* DesignView.storyboard */; };
 		889A11F823364BCF00DFBA59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A11F723364BCF00DFBA59 /* AppDelegate.swift */; };
 		889A11FA23364BCF00DFBA59 /* ChessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A11F923364BCF00DFBA59 /* ChessViewController.swift */; };
 		889A11FD23364BCF00DFBA59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889A11FB23364BCF00DFBA59 /* Main.storyboard */; };
@@ -22,6 +26,10 @@
 		210A980CFDAB55F3D08319D1 /* Pods_Chess2D.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chess2D.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32EBBC9FD4C81041594E32C5 /* Pods-Chess2D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chess2D.release.xcconfig"; path = "Target Support Files/Pods-Chess2D/Pods-Chess2D.release.xcconfig"; sourceTree = "<group>"; };
 		7A7E52E6F0741D0E7E1A6E3F /* Pods-Chess2D.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chess2D.debug.xcconfig"; path = "Target Support Files/Pods-Chess2D/Pods-Chess2D.debug.xcconfig"; sourceTree = "<group>"; };
+		885B3C45233D330F00264145 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		885B3C47233D33AC00264145 /* BoardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardView.xib; sourceTree = "<group>"; };
+		885B3C49233D462800264145 /* ChessFigure.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChessFigure.xib; sourceTree = "<group>"; };
+		885B3C4B233D4F0F00264145 /* DesignView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DesignView.storyboard; sourceTree = "<group>"; };
 		889A11F423364BCF00DFBA59 /* Chess2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chess2D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		889A11F723364BCF00DFBA59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		889A11F923364BCF00DFBA59 /* ChessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessViewController.swift; sourceTree = "<group>"; };
@@ -86,10 +94,14 @@
 			children = (
 				889A11F723364BCF00DFBA59 /* AppDelegate.swift */,
 				889A11F923364BCF00DFBA59 /* ChessViewController.swift */,
+				885B3C45233D330F00264145 /* BoardView.swift */,
+				885B3C47233D33AC00264145 /* BoardView.xib */,
 				889A120B23365FD500DFBA59 /* ChessFigure.swift */,
+				885B3C49233D462800264145 /* ChessFigure.xib */,
 				889A120D23365FE600DFBA59 /* ChessGame.swift */,
 				889A120923364D1E00DFBA59 /* ChessEngine.swift */,
 				889A11FB23364BCF00DFBA59 /* Main.storyboard */,
+				885B3C4B233D4F0F00264145 /* DesignView.storyboard */,
 				889A11FE23364BD100DFBA59 /* Assets.xcassets */,
 				889A120023364BD100DFBA59 /* LaunchScreen.storyboard */,
 				889A120323364BD100DFBA59 /* Info.plist */,
@@ -158,6 +170,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				889A120223364BD100DFBA59 /* LaunchScreen.storyboard in Resources */,
+				885B3C4C233D4F0F00264145 /* DesignView.storyboard in Resources */,
+				885B3C4A233D462800264145 /* ChessFigure.xib in Resources */,
+				885B3C48233D33AC00264145 /* BoardView.xib in Resources */,
 				889A11FF23364BD100DFBA59 /* Assets.xcassets in Resources */,
 				889A11FD23364BCF00DFBA59 /* Main.storyboard in Resources */,
 			);
@@ -215,6 +230,7 @@
 				889A120C23365FD500DFBA59 /* ChessFigure.swift in Sources */,
 				889A120A23364D1E00DFBA59 /* ChessEngine.swift in Sources */,
 				889A11FA23364BCF00DFBA59 /* ChessViewController.swift in Sources */,
+				885B3C46233D330F00264145 /* BoardView.swift in Sources */,
 				889A120E23365FE600DFBA59 /* ChessGame.swift in Sources */,
 				889A11F823364BCF00DFBA59 /* AppDelegate.swift in Sources */,
 			);

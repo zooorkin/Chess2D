@@ -38,15 +38,13 @@ class ChessGame{
     public var pieceForTag: [Int: ChessFigure] = [:]
     
     public let widthOfCell: CGFloat
-    public let position: CGPoint
     public weak var superView: UIView?
     
     var whitePlayerType: PlayerType!
     var blackPlayerType: PlayerType!
     
-    init(widthOfCell: CGFloat, position: CGPoint, view: UIView){
-        self.widthOfCell = widthOfCell
-        self.position = position
+    init(view: UIView){
+        self.widthOfCell = view.frame.width / 8
         superView = view
     }
 
@@ -77,15 +75,13 @@ class ChessGame{
     }
     
     public func getPosition(x: Int, y: Int) -> CGPoint{
-        let xCoordinate = (CGFloat(x) - 1) * widthOfCell + position.x
-        let yCoordinate = (8 - CGFloat(y)) * widthOfCell + position.y
+        let xCoordinate = (CGFloat(x) - 1) * widthOfCell
+        let yCoordinate = (8 - CGFloat(y)) * widthOfCell
         return CGPoint(x: xCoordinate, y: yCoordinate)
     }
     
     public func getCoordinatesForPosition(point: CGPoint) -> (x: Int, y: Int){
         var newPoint = point
-        newPoint.x -= position.x
-        newPoint.y -= position.y
         var x = 0
         var y = 0
         while newPoint.x >= 0{
@@ -102,8 +98,8 @@ class ChessGame{
     
     public func getPositionForSnap(point: CGPoint) -> CGPoint{
         
-        if point.x < position.x || point.x >= position.x + widthOfCell * 8 ||
-            point.y < position.y || point.y >= position.y + widthOfCell * 8 {
+        if point.x < 0 || point.x >= widthOfCell * 8 ||
+            point.y < 0 || point.y >= widthOfCell * 8 {
             return point
         }
         let (x, y) = getCoordinatesForPosition(point: point)
@@ -121,14 +117,14 @@ class ChessGame{
         piece.backgroundColor = UIColor.clear
         piece.game = self
         switch (color, type) {
-        case (.white, .pawn): piece.image = UIImage(named: "w-pawn")
+        case (.white, .pawn): piece.image = UIImage(named: "w-pawn"); piece.isPawn = true
         case (.white, .knight): piece.image = UIImage(named: "w-knight")
         case (.white, .bishop): piece.image = UIImage(named: "w-bishop")
         case (.white, .rook): piece.image = UIImage(named: "w-rook")
         case (.white, .queen): piece.image = UIImage(named: "w-queen")
         case (.white, .king): piece.image = UIImage(named: "w-king")
             
-        case (.black, .pawn): piece.image = UIImage(named: "b-pawn")
+        case (.black, .pawn): piece.image = UIImage(named: "b-pawn"); piece.isPawn = true
         case (.black, .knight): piece.image = UIImage(named: "b-knight")
         case (.black, .bishop): piece.image = UIImage(named: "b-bishop")
         case (.black, .rook): piece.image = UIImage(named: "b-rook")
@@ -138,10 +134,7 @@ class ChessGame{
         case (.black, .doughnut): piece.image = UIImage(named: "doughnut")
         case (.white, .doughnut): piece.image = UIImage(named: "doughnut")
         }
-        //        if color == .black{
-        //            let transform = CGAffineTransform(rotationAngle: CGFloat.pi)
-        //            piece.transform = transform
-        //        }
+
         piece.isUserInteractionEnabled = false
         piece.color = color
         view.addSubview(piece)
