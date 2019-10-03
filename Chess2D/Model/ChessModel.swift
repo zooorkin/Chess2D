@@ -11,9 +11,11 @@ import SwiftChess
 
 protocol IChessModel: class {
     var delegate: IChessModelDelegate? { get set }
-    var blackType: PlayerType { get }
-    var whiteType: PlayerType { get }
+    var blackType: ChessPlayerType { get }
+    var whiteType: ChessPlayerType { get }
     func makeMove(from: (x: Int, y: Int), to: (x: Int, y: Int))
+    func newGame(player1: ChessPlayerType, player2: ChessPlayerType)
+    func endGame()
 }
 
 protocol IChessModelDelegate: class {
@@ -24,20 +26,21 @@ protocol IChessModelDelegate: class {
 
 class ChessModel: IChessModel, GameDelegate {
     
-    private var player1: Player
-    private var player2: Player
-    private var game: Game
+    
+    private var player1: Player!
+    private var player2: Player!
+    private var game: Game!
     
     public weak var delegate: IChessModelDelegate?
     
-    public var blackType: PlayerType {
+    public var blackType: ChessPlayerType {
         if game.blackPlayer is Human {
             return .human
         } else {
             return .computer
         }
     }
-    public var whiteType: PlayerType {
+    public var whiteType: ChessPlayerType {
         if game.whitePlayer is Human {
             return .human
         } else {
@@ -46,10 +49,27 @@ class ChessModel: IChessModel, GameDelegate {
     }
     
     init() {
-        player1 = Human(color: .white)
-        player2 = AIPlayer(color: .black, configuration: .init(difficulty: .medium))
+    }
+    
+    func newGame(player1 type1: ChessPlayerType, player2 type2: ChessPlayerType){
+        endGame()
+        switch type1 {
+        case .human: player1 = Human(color: .white)
+        case .computer: player1 = AIPlayer(color: .white, configuration: .init(difficulty: .medium))
+        }
+        switch type2 {
+        case .human: player2 = Human(color: .black)
+        case .computer: player2 = AIPlayer(color: .black, configuration: .init(difficulty: .medium))
+        }
+    
         game = Game(firstPlayer: player1, secondPlayer: player2)
         game.delegate = self
+    }
+    
+    func endGame(){
+        player1 = nil
+        player2 = nil
+        game = nil
     }
     
     private var blockComputerAsyncNextStep = false

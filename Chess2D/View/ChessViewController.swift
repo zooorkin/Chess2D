@@ -10,37 +10,41 @@ import UIKit
 
 protocol IChessViewController {
     
+    init(presenter: IChessPresenter)
+    
+    var presenter: IChessPresenter {get set}
+    
 }
 
-class ChessView: UIViewController, IChessViewController, IChessPresenterDelegate {
-
+class ChessViewController: UIViewController, IChessViewController, IChessPresenterDelegate {
+    
     
     @IBOutlet weak var boardView: BoardView!
     
-    var presenter: ChessPresenter?
+    public var presenter: IChessPresenter
+    
+    required init(presenter: IChessPresenter){
+        self.presenter = presenter
+        super.init(nibName: "ChessView", bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         self.widthOfCell = boardView.board.frame.width / 8
     }
-    
-//    override func viewDidLayoutSubviews() {
-//        self.widthOfCell = boardView.frame.width / 8
-//    }
 
     @IBAction func newGame(_ sender: Any) {
-        presenter = ChessPresenter()
-        let model = ChessModel()
-        presenter!.model = model
-        model.delegate = presenter
-        presenter?.delegate = self
-        presenter!.newGame()
+        presenter.newGame(whitePlayerType: .human, blackPlayerType: .computer)
     }
     @IBAction func clear(_ sender: Any) {
-        //model = nil
-        presenter?.removeAll()
+        presenter.endGame()
     }
     @IBAction func plusAction(_ sender: Any) {
-        //model.letComputersPlay()
+        
     }
     
 
@@ -76,7 +80,6 @@ class ChessView: UIViewController, IChessViewController, IChessPresenterDelegate
         piece.isUserInteractionEnabled = false
         piece.color = color
         boardView.board.addSubview(piece)
-        print(piece.bounds)
         piece.pieceTag = pieceTag
         pieceForTag[pieceTag] = piece
         pieceTag += 1
@@ -106,11 +109,12 @@ class ChessView: UIViewController, IChessViewController, IChessPresenterDelegate
         }
     }
     
-    func presenterDidRemoveAll() {
+    func presenterDidEndGame() {
         for (_, eachView) in pieceForTag{
             eachView.removeFromSuperview()
         }
         pieceForTag = [:]
+        pieceTag = 1
     }
     
     func presenterDidMovePiece(tag: Int, to: (x: Int, y: Int), animating: Bool) {
@@ -140,14 +144,10 @@ class ChessView: UIViewController, IChessViewController, IChessPresenterDelegate
         return CGPoint(x: xCoordinate, y: yCoordinate)
     }
     
+    
 }
 
-protocol IChessFigureSupport {
-    func getCoordinatesForPosition(point: CGPoint) -> (x: Int, y: Int)
-    func getPositionForSnap(point: CGPoint) -> CGPoint
-}
-
-extension ChessView: IChessFigureSupport {
+extension ChessViewController: IChessFigureSupport {
     func getCoordinatesForPosition(point: CGPoint) -> (x: Int, y: Int){
         var newPoint = point
         var x = 0

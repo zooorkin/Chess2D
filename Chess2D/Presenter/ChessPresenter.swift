@@ -8,27 +8,10 @@
 
 import UIKit
 
-enum ChessPieceType {
-    case pawn
-    case king
-    case rook
-    case bishop
-    case queen
-    case knight
-    case doughnut
-}
-
-enum ChessColor{
-    case white
-    case black
-}
-
-enum PlayerType{
-    case human
-    case computer
-}
-
 protocol IChessPresenter {
+    var delegate: IChessPresenterDelegate? {get set}
+    func newGame(whitePlayerType: ChessPlayerType, blackPlayerType: ChessPlayerType)
+    func endGame()
     func makeMove(from: (x: Int, y: Int), to: (x: Int, y: Int))
     func freezeOthers(excluding: Int)
 }
@@ -38,24 +21,30 @@ protocol IChessPresenterDelegate: class {
     func presenterDidFreezeAll()
     func presenterDidFreezeFor(color: ChessColor)
     func presenterDidFreezeOthers(excluding: Int)
-    func presenterDidRemoveAll()
+    func presenterDidEndGame()
     func presenterDidMovePiece(tag: Int, to: (x: Int, y: Int), animating: Bool)
     func presenterDidRemovePiece(tag: Int)
 }
 
 class ChessPresenter: IChessPresenter{
-
+    
+    
     public weak var delegate: IChessPresenterDelegate?
     
-    public var model: IChessModel?
+    public var model: IChessModel
 
-    var whitePlayerType: PlayerType!
-    var blackPlayerType: PlayerType!
+    var whitePlayerType: ChessPlayerType!
+    var blackPlayerType: ChessPlayerType!
+    
+    init(model: IChessModel) {
+        self.model = model
+        self.model.delegate = self
+    }
     
     private var started = false
     
     public func makeMove(from: (x: Int, y: Int), to: (x: Int, y: Int)){
-        model?.makeMove(from: (x: from.x - 1, y: from.y - 1), to: (x: to.x - 1, y: to.y - 1))
+        model.makeMove(from: (x: from.x - 1, y: from.y - 1), to: (x: to.x - 1, y: to.y - 1))
     }
     
     public func freezeOthers(excluding: Int){
@@ -74,10 +63,11 @@ class ChessPresenter: IChessPresenter{
         delegate?.presenterDidFreezeFor(color: color)
     }
     
-    public func newGame(whitePlayerType: PlayerType = .human, blackPlayerType: PlayerType = .computer){
+    public func newGame(whitePlayerType: ChessPlayerType = .human, blackPlayerType: ChessPlayerType = .computer){
+        model.newGame(player1: whitePlayerType, player2: blackPlayerType)
         if started == false{
-            self.whitePlayerType = model!.whiteType
-            self.blackPlayerType = model!.blackType
+            self.whitePlayerType = model.whiteType
+            self.blackPlayerType = model.blackType
             let FiguresPosition: [ChessPieceType] = [.rook, .knight, .bishop, .queen, .king, .bishop, .knight, .rook]
             for (i, FigureType) in FiguresPosition.enumerated(){
                 delegate?.presenterDidAddPiece(at: (x: i + 1, y: 1), type: FigureType, color: .white)
@@ -92,9 +82,14 @@ class ChessPresenter: IChessPresenter{
                 delegate?.presenterDidAddPiece(at: (x: i, y: 7), type: .pawn, color: .black)
             }
             setCurrentPlayerColor(color: .white)
-            print("added")
             started = true
         }
+    }
+    
+    public func endGame(){
+        started = false
+        model.endGame()
+        delegate?.presenterDidEndGame()
     }
     
     private func setCurrentPlayerColor(color: ChessColor){
@@ -114,9 +109,7 @@ class ChessPresenter: IChessPresenter{
         }
     }
     
-    public func removeAll(){
-        delegate?.presenterDidRemoveAll()
-    }
+
 }
 
 extension ChessPresenter: IChessModelDelegate {

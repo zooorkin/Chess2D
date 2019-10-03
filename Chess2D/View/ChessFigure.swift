@@ -9,8 +9,12 @@
 import Foundation
 import UIKit
 
-@IBDesignable
+protocol IChessFigureSupport {
+    func getCoordinatesForPosition(point: CGPoint) -> (x: Int, y: Int)
+    func getPositionForSnap(point: CGPoint) -> CGPoint
+}
 
+@IBDesignable
 class ChessFigure: UIView{
     
     var typeOfPiece: ChessPieceType?
@@ -93,6 +97,7 @@ class ChessFigure: UIView{
         super.draw(rect)
         
         UIColor.red.set()
+        path?.fill()
         path?.stroke()
         path?.lineWidth = 2.0
     }
@@ -138,7 +143,7 @@ class ChessFigure: UIView{
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        if let animator = animator, let presenter = presenter {
+        if let animator = animator {
             animator.removeBehavior(attachment!)
             // Вроде не нужно
             //presenter.freezeFor(color: color == .white ? .black : .white)
@@ -168,7 +173,6 @@ class ChessFigure: UIView{
         circlePath.addArc(withCenter: center, radius: radius, startAngle: 0, endAngle: CGFloat(Double.pi/2), clockwise: true)
         circlePath.addArc(withCenter: center, radius: radius, startAngle: CGFloat(Double.pi/2), endAngle: CGFloat(Double.pi), clockwise: true)
         circlePath.close()
-        circlePath.fill()
         return circlePath
     }
     
