@@ -37,13 +37,50 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
     }
 
     @IBAction func newGame(_ sender: Any) {
-        presenter.newGame(whitePlayerType: .human, blackPlayerType: .computer)
+        let alert = UIAlertController(title: "Новая игра",
+                                      message: "Выберете тип игры",
+                                      preferredStyle: .alert)
+        
+        let type0 = (white: Chess2D.PlayerType.human,
+                     black: Chess2D.PlayerType.human,
+                     level: Chess2D.Difficulty.notSpecified,
+                     description: "С человеком")
+        
+        let type1 = (white: Chess2D.PlayerType.human,
+                     black: Chess2D.PlayerType.computer,
+                     level: Chess2D.Difficulty.easy,
+                     description: "С компьютером (легкий)")
+        let type2 = (white: Chess2D.PlayerType.human,
+                     black: Chess2D.PlayerType.computer,
+                     level: Chess2D.Difficulty.medium,
+                     description: "С компьютером (средний)")
+        let type3 = (white: Chess2D.PlayerType.human,
+                     black: Chess2D.PlayerType.computer,
+                     level: Chess2D.Difficulty.hard,
+                     description: "С компьютером (сложный)")
+        
+        for gameType in [type0, type1, type2, type3] {
+            var gameTypeName = gameType.description
+            
+            let pieceTypeAlertAction = UIAlertAction(title: gameTypeName, style: .default) {
+                (action) in
+                self.presenter.newGame(whitePlayerType: gameType.white, blackPlayerType: gameType.black, difficulty: gameType.level)
+            }
+            alert.addAction(pieceTypeAlertAction)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel) { (action) in }
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true) { }
+    
     }
     @IBAction func clear(_ sender: Any) {
         presenter.endGame()
     }
     @IBAction func plusAction(_ sender: Any) {
-        
+        presenterPromotedTypeForPawn { (pieceType) in
+            
+        }
     }
     
     public var widthOfCell: CGFloat = 0.0
@@ -51,28 +88,14 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
     
     private var pieceTag: Int = 1
     
-    func presenterDidAddPiece(at point: (x: Int, y: Int), type: ChessPieceType, color: ChessColor) {
+    func presenterDidAddPiece(at point: (x: Int, y: Int), type: Chess2D.PieceType, color: Chess2D.Color) {
         let size = CGSize(width: widthOfCell, height: widthOfCell)
         let piece = ChessFigure(frame: CGRect(origin: getPosition(x: point.x, y: point.y), size: size))
         piece.backgroundColor = UIColor.clear
         piece.presenter = presenter
-        switch (color, type) {
-        case (.white, .pawn): piece.image = UIImage(named: "w-pawn"); piece.isPawn = true
-        case (.white, .knight): piece.image = UIImage(named: "w-knight")
-        case (.white, .bishop): piece.image = UIImage(named: "w-bishop")
-        case (.white, .rook): piece.image = UIImage(named: "w-rook")
-        case (.white, .queen): piece.image = UIImage(named: "w-queen")
-        case (.white, .king): piece.image = UIImage(named: "w-king")
-            
-        case (.black, .pawn): piece.image = UIImage(named: "b-pawn"); piece.isPawn = true
-        case (.black, .knight): piece.image = UIImage(named: "b-knight")
-        case (.black, .bishop): piece.image = UIImage(named: "b-bishop")
-        case (.black, .rook): piece.image = UIImage(named: "b-rook")
-        case (.black, .queen): piece.image = UIImage(named: "b-queen")
-        case (.black, .king): piece.image = UIImage(named: "b-king")
-            
-        case (.black, .doughnut): piece.image = UIImage(named: "doughnut")
-        case (.white, .doughnut): piece.image = UIImage(named: "doughnut")
+        piece.image = UIImage(named: type.imageName(color: color))
+        if type == .pawn {
+            piece.isPawn = true
         }
         piece.chessView = self
         piece.isUserInteractionEnabled = false
@@ -89,7 +112,7 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
         }
     }
     
-    func presenterDidFreezeFor(color: ChessColor) {
+    func presenterDidFreezeFor(color: Chess2D.Color) {
         pieceForTag.forEach{
             if $0.value.color == color {
                 $0.value.isUserInteractionEnabled = false
@@ -136,7 +159,7 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
         pieceForTag[tag] = nil
     }
     
-    func presenterGameWonByPlayer(color: ChessColor) {
+    func presenterGameWonByPlayer(color: Chess2D.Color) {
         let text = color == .white ? "Победили белые" : "Победили чёрные"
         let alertController = UIAlertController(title: "Шах и мат!",
                                                 message: text,
@@ -149,6 +172,36 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
                                                 message: "Победила дружба",
                                                 preferredStyle: .alert)
         self.present(alertController, animated: true)
+    }
+    
+    func presenterPromotedTypeForPawn(callback: @escaping (Chess2D.PieceType) -> Void) {
+        let alert = UIAlertController(title: "Пешка повышена!",
+                                      message: "Выберите фигуру",
+                                      preferredStyle: .alert)
+        
+        for pieceType in [Chess2D.PieceType.bishop, .knight, .queen, .rook] {
+            let pieceTypeAlertAction = UIAlertAction(title: pieceType.name, style: .default) {
+                (action) in
+                callback(pieceType)
+            }
+            alert.addAction(pieceTypeAlertAction)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in }
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true) { }
+    }
+    
+    func presenterDidChangeTypeOfPiece(tag: Int, newType: Chess2D.PieceType) {
+        DispatchQueue.main.async {
+            let piece = self.pieceForTag[tag]
+            if tag >= 1 && tag <= 16 {
+                piece?.image = UIImage(named: newType.imageName(color: .white))
+            } else if tag >= 17 && tag <= 32 {
+                piece?.image = UIImage(named: newType.imageName(color: .black))
+            }
+        }
     }
     
     private func getPosition(x: Int, y: Int) -> CGPoint{

@@ -17,7 +17,7 @@ protocol IChessFigureSupport {
 @IBDesignable
 class ChessFigure: UIView{
     
-    var typeOfPiece: ChessPieceType?
+    var typeOfPiece: Chess2D.PieceType?
     var presenter: IChessPresenter?
     
     var chessView: IChessFigureSupport!
@@ -29,7 +29,7 @@ class ChessFigure: UIView{
     var lastTouch: CGPoint?
     var loastTouchSuperView: CGPoint?
     var pieceTag: Int!
-    var color: ChessColor!
+    var color: Chess2D.Color!
     
     @IBOutlet weak var imageView: UIImageView!
     public var image: UIImage? {
