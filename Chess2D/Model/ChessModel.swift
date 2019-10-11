@@ -166,7 +166,6 @@ class ChessModel: IChessModel, GameDelegate {
             case .pawn: callback(.pawn)
             case .queen: callback(.queen)
             case .rook: callback(.rook)
-            default: fatalError("Wrong piece type for pawn promotion")
             }
         }
         delegate?.chessModelPromotedTypeForPawn(callback: adapatedCallback)

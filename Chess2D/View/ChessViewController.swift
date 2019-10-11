@@ -60,7 +60,7 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
                      description: "С компьютером (сложный)")
         
         for gameType in [type0, type1, type2, type3] {
-            var gameTypeName = gameType.description
+            let gameTypeName = gameType.description
             
             let pieceTypeAlertAction = UIAlertAction(title: gameTypeName, style: .default) {
                 (action) in
