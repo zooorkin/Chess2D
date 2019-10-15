@@ -35,52 +35,28 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
     override func viewDidLoad() {
         self.widthOfCell = boardView.board.frame.width / 8
     }
+    
+    func presenterDidSuggestActions(withLabel: String, actions: [Chess2D.Action]) {
+        // FIXME: Использовать метод c message
+        let alert = UIAlertController(title: withLabel, message: nil, preferredStyle: .alert)
+        for action in actions {
+            let title = action.title
+            let style = action.type.alertActionStyle
+            let action = { (_: UIAlertAction) in action.action() }
+            let alertAction = UIAlertAction(title: title, style: style, handler: action)
+            alert.addAction(alertAction)
+        }
+        self.present(alert, animated: true, completion: nil)
+    }
 
     @IBAction func newGame(_ sender: Any) {
-        let alert = UIAlertController(title: "Новая игра",
-                                      message: "Выберете тип игры",
-                                      preferredStyle: .alert)
-        
-        let type0 = (white: Chess2D.PlayerType.human,
-                     black: Chess2D.PlayerType.human,
-                     level: Chess2D.Difficulty.notSpecified,
-                     description: "С человеком")
-        
-        let type1 = (white: Chess2D.PlayerType.human,
-                     black: Chess2D.PlayerType.computer,
-                     level: Chess2D.Difficulty.easy,
-                     description: "С компьютером (легкий)")
-        let type2 = (white: Chess2D.PlayerType.human,
-                     black: Chess2D.PlayerType.computer,
-                     level: Chess2D.Difficulty.medium,
-                     description: "С компьютером (средний)")
-        let type3 = (white: Chess2D.PlayerType.human,
-                     black: Chess2D.PlayerType.computer,
-                     level: Chess2D.Difficulty.hard,
-                     description: "С компьютером (сложный)")
-        
-        for gameType in [type0, type1, type2, type3] {
-            let gameTypeName = gameType.description
-            
-            let pieceTypeAlertAction = UIAlertAction(title: gameTypeName, style: .default) {
-                (action) in
-                self.presenter.newGame(whitePlayerType: gameType.white, blackPlayerType: gameType.black, difficulty: gameType.level)
-            }
-            alert.addAction(pieceTypeAlertAction)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel) { (action) in }
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true) { }
-    
+        self.presenter.newGame()
     }
+    
     @IBAction func clear(_ sender: Any) {
-        presenter.endGame()
+        self.presenter.endGame()
     }
     @IBAction func plusAction(_ sender: Any) {
-        presenterPromotedTypeForPawn { (pieceType) in
-            
-        }
     }
     
     public var widthOfCell: CGFloat = 0.0
@@ -107,34 +83,20 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
     }
     
     func presenterDidFreezeAll() {
-        pieceForTag.forEach{
-            $0.value.isUserInteractionEnabled = false
-        }
+        pieceForTag.forEach{ $0.value.isUserInteractionEnabled = false }
     }
     
     func presenterDidFreezeFor(color: Chess2D.Color) {
-        pieceForTag.forEach{
-            if $0.value.color == color {
-                $0.value.isUserInteractionEnabled = false
-            } else {
-                $0.value.isUserInteractionEnabled = true
-            }
-        }
+        pieceForTag.forEach{ $0.value.isUserInteractionEnabled = $0.value.color == color ? false : true }
     }
     
     func presenterDidFreezeOthers(excluding: Int) {
-        pieceForTag.filter{
-            $0.value.pieceTag != excluding
-            }.forEach{
-                $0.value.isUserInteractionEnabled = false
-        }
+        pieceForTag.filter{ $0.value.pieceTag != excluding }.forEach{ $0.value.isUserInteractionEnabled = false }
     }
     
     func presenterDidEndGame() {
-        for (_, eachView) in pieceForTag{
-            eachView.removeFromSuperview()
-        }
-        pieceForTag = [:]
+        pieceForTag.forEach{ $0.value.removeFromSuperview() }
+        pieceForTag.removeAll()
         pieceTag = 1
     }
     
@@ -159,40 +121,6 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
         pieceForTag[tag] = nil
     }
     
-    func presenterGameWonByPlayer(color: Chess2D.Color) {
-        let text = color == .white ? "Победили белые" : "Победили чёрные"
-        let alertController = UIAlertController(title: "Шах и мат!",
-                                                message: text,
-                                                preferredStyle: .alert)
-        self.present(alertController, animated: true)
-    }
-    
-    func presenterGameEndedInStaleMate() {
-        let alertController = UIAlertController(title: "Пат!",
-                                                message: "Победила дружба",
-                                                preferredStyle: .alert)
-        self.present(alertController, animated: true)
-    }
-    
-    func presenterPromotedTypeForPawn(callback: @escaping (Chess2D.PieceType) -> Void) {
-        let alert = UIAlertController(title: "Пешка повышена!",
-                                      message: "Выберите фигуру",
-                                      preferredStyle: .alert)
-        
-        for pieceType in [Chess2D.PieceType.bishop, .knight, .queen, .rook] {
-            let pieceTypeAlertAction = UIAlertAction(title: pieceType.name, style: .default) {
-                (action) in
-                callback(pieceType)
-            }
-            alert.addAction(pieceTypeAlertAction)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in }
-        alert.addAction(cancelAction)
-        
-        self.present(alert, animated: true) { }
-    }
-    
     func presenterDidChangeTypeOfPiece(tag: Int, newType: Chess2D.PieceType) {
         DispatchQueue.main.async {
             let piece = self.pieceForTag[tag]
@@ -200,6 +128,8 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
                 piece?.image = UIImage(named: newType.imageName(color: .white))
             } else if tag >= 17 && tag <= 32 {
                 piece?.image = UIImage(named: newType.imageName(color: .black))
+            } else {
+                fatalError("Встречена фигура с неизвестным тегом")
             }
         }
     }
@@ -210,6 +140,13 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
         return CGPoint(x: xCoordinate, y: yCoordinate)
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
 }
 
@@ -231,7 +168,6 @@ extension ChessViewController: IChessFigureSupport {
     }
     
     func getPositionForSnap(point: CGPoint) -> CGPoint{
-        
         if point.x < 0 || point.x >= widthOfCell * 8 ||
             point.y < 0 || point.y >= widthOfCell * 8 {
             return point

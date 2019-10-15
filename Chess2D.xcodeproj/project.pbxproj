@@ -18,10 +18,10 @@
 		889A11F823364BCF00DFBA59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A11F723364BCF00DFBA59 /* AppDelegate.swift */; };
 		889A11FA23364BCF00DFBA59 /* ChessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A11F923364BCF00DFBA59 /* ChessViewController.swift */; };
 		889A11FF23364BD100DFBA59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 889A11FE23364BD100DFBA59 /* Assets.xcassets */; };
-		889A120223364BD100DFBA59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889A120023364BD100DFBA59 /* LaunchScreen.storyboard */; };
 		889A120A23364D1E00DFBA59 /* ChessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A120923364D1E00DFBA59 /* ChessModel.swift */; };
 		889A120C23365FD500DFBA59 /* ChessFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A120B23365FD500DFBA59 /* ChessFigure.swift */; };
 		889A120E23365FE600DFBA59 /* ChessPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A120D23365FE600DFBA59 /* ChessPresenter.swift */; };
+		88B879CE235275AA00599231 /* Launch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B879CD235275AA00599231 /* Launch.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,11 +39,11 @@
 		889A11F723364BCF00DFBA59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		889A11F923364BCF00DFBA59 /* ChessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessViewController.swift; sourceTree = "<group>"; };
 		889A11FE23364BD100DFBA59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		889A120123364BD100DFBA59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		889A120323364BD100DFBA59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		889A120923364D1E00DFBA59 /* ChessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessModel.swift; sourceTree = "<group>"; };
 		889A120B23365FD500DFBA59 /* ChessFigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessFigure.swift; sourceTree = "<group>"; };
 		889A120D23365FE600DFBA59 /* ChessPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPresenter.swift; sourceTree = "<group>"; };
+		88B879CD235275AA00599231 /* Launch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Launch.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +141,7 @@
 				8882AF3D2346297A00A38567 /* Presenter */,
 				8882AF3C2346297300A38567 /* Model */,
 				889A11FE23364BD100DFBA59 /* Assets.xcassets */,
-				889A120023364BD100DFBA59 /* LaunchScreen.storyboard */,
+				88B879CD235275AA00599231 /* Launch.xib */,
 				889A120323364BD100DFBA59 /* Info.plist */,
 			);
 			path = Chess2D;
@@ -207,10 +207,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				889A120223364BD100DFBA59 /* LaunchScreen.storyboard in Resources */,
 				8882AF442346587700A38567 /* ChessView.xib in Resources */,
 				885B3C4A233D462800264145 /* ChessFigure.xib in Resources */,
 				885B3C48233D33AC00264145 /* BoardView.xib in Resources */,
+				88B879CE235275AA00599231 /* Launch.xib in Resources */,
 				889A11FF23364BD100DFBA59 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,17 +277,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		889A120023364BD100DFBA59 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				889A120123364BD100DFBA59 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		889A120423364BD100DFBA59 /* Debug */ = {

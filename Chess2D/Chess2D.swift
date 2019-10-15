@@ -6,7 +6,9 @@
 //  Copyright © 2019 Андрей Зорькин. All rights reserved.
 //
 
-final class Chess2D {
+import UIKit
+
+struct Chess2D {
     public enum PieceType {
         case pawn
         case king
@@ -50,7 +52,7 @@ final class Chess2D {
         }
     }
     
-    public enum Color{
+    public enum Color: CaseIterable{
         case white
         case black
     }
@@ -82,6 +84,34 @@ final class Chess2D {
             case .computer: return "Computer"
             }
         }
+    }
+    
+    public struct GameType {
+        let white: Chess2D.PlayerType
+        let black: Chess2D.PlayerType
+        let level: Chess2D.Difficulty
+        let description: String
+    }
+    
+    public enum ActionType {
+        case `default`
+        case cancel
+        case destructive
+    
+        var alertActionStyle: UIAlertAction.Style {
+            switch self {
+            case .default: return .default
+            case .destructive: return .destructive
+            case .cancel: return .cancel
+            }
+        }
+    }
+    
+    public struct Action {
+        static let cancel = Chess2D.Action(title: "Отмена", type: .cancel, action: {})
+        let title: String
+        let type: ActionType
+        let action: () -> ()
     }
 
 }

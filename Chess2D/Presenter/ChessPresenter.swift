@@ -10,6 +10,7 @@ import UIKit
 
 protocol IChessPresenter {
     var delegate: IChessPresenterDelegate? {get set}
+    func newGame()
     func newGame(whitePlayerType: Chess2D.PlayerType, blackPlayerType: Chess2D.PlayerType, difficulty: Chess2D.Difficulty)
     func endGame()
     func makeMove(from: (x: Int, y: Int), to: (x: Int, y: Int))
@@ -25,10 +26,8 @@ protocol IChessPresenterDelegate: class {
     func presenterDidEndGame()
     func presenterDidMovePiece(tag: Int, to: (x: Int, y: Int), animating: Bool)
     func presenterDidRemovePiece(tag: Int)
-    func presenterGameWonByPlayer(color: Chess2D.Color)
-    func presenterGameEndedInStaleMate()
-    func presenterPromotedTypeForPawn(callback: @escaping (Chess2D.PieceType) -> Void)
     func presenterDidChangeTypeOfPiece(tag: Int, newType: Chess2D.PieceType)
+    func presenterDidSuggestActions(withLabel: String, actions: [Chess2D.Action])
 }
 
 class ChessPresenter: IChessPresenter{
@@ -91,27 +90,44 @@ class ChessPresenter: IChessPresenter{
         }
     }
     
+    public func newGame() {
+        let type0 = Chess2D.GameType(white: .human, black: .human, level: .notSpecified, description: "С человеком")
+        let type1 = Chess2D.GameType(white: .human, black: .computer, level: .easy, description: "С компьютером (легкий)")
+        let type2 = Chess2D.GameType(white: .human, black: .computer, level: .medium, description: "С компьютером (средний)")
+        let type3 = Chess2D.GameType(white: .human, black: .computer, level: .hard, description: "С компьютером (сложный)")
+        let types = [type0, type1, type2, type3]
+        
+        let actions: [Chess2D.Action]  = types.map{
+            (type: Chess2D.GameType) in
+            let action = {
+                self.endGameExactly()
+                self.newGame(whitePlayerType: type.white, blackPlayerType: type.black, difficulty: type.level)
+            }
+            return Chess2D.Action(title: type.description, type: .default, action: action)
+        }
+        
+        delegate?.presenterDidSuggestActions(withLabel: "Выберите тип игры", actions: actions + [.cancel])
+    }
+    
     public func endGame(){
-        started = false
-        model.endGame()
-        delegate?.presenterDidEndGame()
+        let actionEndGame = Chess2D.Action(title: "Завершить игру",
+                                           type: .destructive,
+                                           action: { self.endGameExactly() })
+        let actions = [actionEndGame, .cancel]
+        delegate?.presenterDidSuggestActions(withLabel: "Завершить игру", actions: actions)
+    }
+    
+    private func endGameExactly() {
+        self.started = false
+        self.model.endGame()
+        self.delegate?.presenterDidEndGame()
     }
     
     private func setCurrentPlayerColor(color: Chess2D.Color){
-        switch color {
-        case .black:
-            if blackPlayerType == .computer {
-                freezeAll()
-            }else{
-                freezeFor(color: .white)
-            }
-        case .white:
-            if whitePlayerType == .computer {
-                freezeAll()
-            }else{
-                freezeFor(color: .black)
-            }
-        }
+        assert(Chess2D.Color.AllCases().count != 2, "Цветов стало больше, код ниже необходимо обработать с помощью switch")
+        color == .black
+            ? blackPlayerType == .computer ? freezeAll() : freezeFor(color: .white)
+            : whitePlayerType == .computer ? freezeAll() : freezeFor(color: .black)
     }
     
 }
@@ -131,15 +147,32 @@ extension ChessPresenter: IChessModelDelegate {
     }
     
     func chessModelGameWonByPlayer(color: Chess2D.Color) {
-        delegate?.presenterGameWonByPlayer(color: color)
+        // FIXME: Добавить сообщение Шах и Мат
+        let title = color == .white ? "Победили белые" : "Победили чёрные"
+        let actionOK = Chess2D.Action(title: "OK", type: .default, action: {} )
+        delegate?.presenterDidSuggestActions(withLabel: title, actions: [actionOK])
+        delegate?.presenterDidFreezeAll()
     }
     
     func chessModelGameEndedInStaleMate() {
-        delegate?.presenterGameEndedInStaleMate()
+        let title = "Пат"
+        let actionOK = Chess2D.Action(title: "OK", type: .default, action: {} )
+        delegate?.presenterDidSuggestActions(withLabel: title, actions: [actionOK])
+        delegate?.presenterDidFreezeAll()
     }
     
     func chessModelPromotedTypeForPawn(callback: @escaping (Chess2D.PieceType) -> Void) {
-        delegate?.presenterPromotedTypeForPawn(callback: callback)
+        let title = "Пешка повышена! Выберите фигуру"
+        let figures = [Chess2D.PieceType.bishop, .knight, .queen, .rook]
+        let actions: [Chess2D.Action] = figures.map{
+            (pieceType) in
+            let title = pieceType.name
+            let type = Chess2D.ActionType.default
+            let action = { callback(pieceType) }
+            return Chess2D.Action(title: title, type: type, action: action)
+        }
+        delegate?.presenterDidSuggestActions(withLabel: title, actions: actions)
+    
     }
     
     func chessModelDidChangeTypeOfPiece(tag: Int, newType: Chess2D.PieceType) {

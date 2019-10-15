@@ -191,7 +191,7 @@ class ChessModel: IChessModel, GameDelegate {
         var type = Chess2D.PieceType.pawn
         switch piece.type {
         case .bishop: type = .bishop
-        case .knight: type = .king
+        case .knight: type = .knight
         case .queen: type = .queen
         case .rook: type = .rook
         default: fatalError()
