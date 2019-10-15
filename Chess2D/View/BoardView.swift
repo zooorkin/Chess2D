@@ -93,7 +93,7 @@ class BoardView: UIView {
             let w = panel876View.frame.size.width
             let rect = CGRect(x: 0, y: y, width: w, height: width)
             let label = UILabel(frame: rect)
-            label.text = alphabet[i].uppercased()
+            label.text = alphabet[7 - i].uppercased()
             label.textColor = UIColor.darkGray
             label.textAlignment = .center
             let transform = CGAffineTransform(rotationAngle: CGFloat.pi)
