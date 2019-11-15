@@ -12,7 +12,6 @@
 		885B3C48233D33AC00264145 /* BoardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 885B3C47233D33AC00264145 /* BoardView.xib */; };
 		885B3C4A233D462800264145 /* ChessFigure.xib in Resources */ = {isa = PBXBuildFile; fileRef = 885B3C49233D462800264145 /* ChessFigure.xib */; };
 		8882AF3F2346512700A38567 /* ChessCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8882AF3E2346512700A38567 /* ChessCoordinator.swift */; };
-		8882AF42234656A400A38567 /* ChessTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8882AF41234656A400A38567 /* ChessTypes.swift */; };
 		8882AF442346587700A38567 /* ChessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8882AF432346587700A38567 /* ChessView.xib */; };
 		888371722350B58C0080AF0B /* Chess2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888371712350B58C0080AF0B /* Chess2D.swift */; };
 		889A11F823364BCF00DFBA59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A11F723364BCF00DFBA59 /* AppDelegate.swift */; };
@@ -33,7 +32,6 @@
 		885B3C47233D33AC00264145 /* BoardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardView.xib; sourceTree = "<group>"; };
 		885B3C49233D462800264145 /* ChessFigure.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChessFigure.xib; sourceTree = "<group>"; };
 		8882AF3E2346512700A38567 /* ChessCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessCoordinator.swift; sourceTree = "<group>"; };
-		8882AF41234656A400A38567 /* ChessTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChessTypes.swift; path = Chess2D/ChessTypes.swift; sourceTree = SOURCE_ROOT; };
 		8882AF432346587700A38567 /* ChessView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChessView.xib; sourceTree = "<group>"; };
 		888371712350B58C0080AF0B /* Chess2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chess2D.swift; sourceTree = "<group>"; };
 		889A11F423364BCF00DFBA59 /* Chess2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chess2D.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,18 +134,25 @@
 			isa = PBXGroup;
 			children = (
 				889A11F723364BCF00DFBA59 /* AppDelegate.swift */,
-				8882AF41234656A400A38567 /* ChessTypes.swift */,
 				888371712350B58C0080AF0B /* Chess2D.swift */,
 				8882AF402346512D00A38567 /* ChessCoordinator */,
 				8882AF3B2346296900A38567 /* View */,
 				8882AF3D2346297A00A38567 /* Presenter */,
 				8882AF3C2346297300A38567 /* Model */,
 				88E84AB6237E9B3700F517EB /* AssertionFailureAbilities.swift */,
-				889A11FE23364BD100DFBA59 /* Assets.xcassets */,
-				88B879CD235275AA00599231 /* Launch.xib */,
-				889A120323364BD100DFBA59 /* Info.plist */,
+				88E84AB8237EC1B200F517EB /* Supporting Files */,
 			);
 			path = Chess2D;
+			sourceTree = "<group>";
+		};
+		88E84AB8237EC1B200F517EB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				889A120323364BD100DFBA59 /* Info.plist */,
+				88B879CD235275AA00599231 /* Launch.xib */,
+				889A11FE23364BD100DFBA59 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,7 +279,6 @@
 				885B3C46233D330F00264145 /* BoardView.swift in Sources */,
 				8882AF3F2346512700A38567 /* ChessCoordinator.swift in Sources */,
 				889A120E23365FE600DFBA59 /* ChessPresenter.swift in Sources */,
-				8882AF42234656A400A38567 /* ChessTypes.swift in Sources */,
 				888371722350B58C0080AF0B /* Chess2D.swift in Sources */,
 				889A11F823364BCF00DFBA59 /* AppDelegate.swift in Sources */,
 			);
@@ -406,7 +410,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 68427LK7H9;
-				INFOPLIST_FILE = Chess2D/Info.plist;
+				INFOPLIST_FILE = "Chess2D/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -425,7 +429,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 68427LK7H9;
-				INFOPLIST_FILE = Chess2D/Info.plist;
+				INFOPLIST_FILE = "Chess2D/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
