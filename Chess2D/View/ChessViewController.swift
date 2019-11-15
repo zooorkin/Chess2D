@@ -20,6 +20,10 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
     
     
     @IBOutlet weak var boardView: BoardView!
+    @IBOutlet weak var firstPlayerTimeLabel: UILabel!
+    @IBOutlet weak var secondPlayerTimeLabel: UILabel!
+    @IBOutlet weak var firstPlayerTotalTimeLabel: UILabel!
+    @IBOutlet weak var secondPlayerTotalTimeLabel: UILabel!
     
     public var presenter: IChessPresenter
     
@@ -103,7 +107,7 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
     func presenterDidMovePiece(tag: Int, to: (x: Int, y: Int), animating: Bool) {
         if let piece = pieceForTag[tag] {
             if animating {
-                UIView.animate(withDuration: 0.3){
+                UIView.animate(withDuration: 0.5){
                     piece.frame.origin = self.getPosition(x: to.x + 1, y: to.y + 1)
                 }
             } else {
@@ -132,6 +136,22 @@ class ChessViewController: UIViewController, IChessViewController, IChessPresent
                 fatalError("Встречена фигура с неизвестным тегом")
             }
         }
+    }
+    
+    func presenterDidUpdateTimeLabelForPlayer1(label: String) {
+        firstPlayerTimeLabel.text = label
+    }
+    
+    func presenterDidUpdateTimeLabelForPlayer2(label: String) {
+        secondPlayerTimeLabel.text = label
+    }
+    
+    func presenterDidUpdateTotalTimeLabelForPlayer1(label: String) {
+        firstPlayerTotalTimeLabel.text = label
+    }
+    
+    func presenterDidUpdateTotalTimeLabelForPlayer2(label: String) {
+        secondPlayerTotalTimeLabel.text = label
     }
     
     private func getPosition(x: Int, y: Int) -> CGPoint{

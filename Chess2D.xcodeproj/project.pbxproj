@@ -22,6 +22,7 @@
 		889A120C23365FD500DFBA59 /* ChessFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A120B23365FD500DFBA59 /* ChessFigure.swift */; };
 		889A120E23365FE600DFBA59 /* ChessPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A120D23365FE600DFBA59 /* ChessPresenter.swift */; };
 		88B879CE235275AA00599231 /* Launch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B879CD235275AA00599231 /* Launch.xib */; };
+		88E84AB7237E9B3700F517EB /* AssertionFailureAbilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E84AB6237E9B3700F517EB /* AssertionFailureAbilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		889A120B23365FD500DFBA59 /* ChessFigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessFigure.swift; sourceTree = "<group>"; };
 		889A120D23365FE600DFBA59 /* ChessPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPresenter.swift; sourceTree = "<group>"; };
 		88B879CD235275AA00599231 /* Launch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Launch.xib; sourceTree = "<group>"; };
+		88E84AB6237E9B3700F517EB /* AssertionFailureAbilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssertionFailureAbilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				8882AF3B2346296900A38567 /* View */,
 				8882AF3D2346297A00A38567 /* Presenter */,
 				8882AF3C2346297300A38567 /* Model */,
+				88E84AB6237E9B3700F517EB /* AssertionFailureAbilities.swift */,
 				889A11FE23364BD100DFBA59 /* Assets.xcassets */,
 				88B879CD235275AA00599231 /* Launch.xib */,
 				889A120323364BD100DFBA59 /* Info.plist */,
@@ -264,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88E84AB7237E9B3700F517EB /* AssertionFailureAbilities.swift in Sources */,
 				889A120C23365FD500DFBA59 /* ChessFigure.swift in Sources */,
 				889A120A23364D1E00DFBA59 /* ChessModel.swift in Sources */,
 				889A11FA23364BCF00DFBA59 /* ChessViewController.swift in Sources */,

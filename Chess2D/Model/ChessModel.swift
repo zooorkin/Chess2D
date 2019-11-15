@@ -26,6 +26,8 @@ protocol IChessModelDelegate: class {
     func chessModelGameEndedInStaleMate()
     func chessModelPromotedTypeForPawn(callback: @escaping (Chess2D.PieceType) -> Void)
     func chessModelDidChangeTypeOfPiece(tag: Int, newType: Chess2D.PieceType)
+    func chessModelDidUpdateTimeForPlayer(color: Chess2D.Color, time: TimeInterval)
+    func chessModelDidUpdateTotalTimeForPlayer(color: Chess2D.Color, time: TimeInterval)
 }
 
 class ChessModel: IChessModel, GameDelegate {
@@ -34,6 +36,18 @@ class ChessModel: IChessModel, GameDelegate {
     private var player1: Player!
     private var player2: Player!
     private var game: Game!
+
+    private var timer: Timer?
+    
+    private struct ChessTime {
+        var movement1: Double
+        var movement2: Double
+        var totalMovements1: Double
+        var totalMovements2: Double
+    }
+    
+    private var chessTime: ChessTime
+    private var lastFixedTime: Date?
     
     public weak var delegate: IChessModelDelegate?
     
@@ -53,6 +67,7 @@ class ChessModel: IChessModel, GameDelegate {
     }
     
     init() {
+        chessTime = ChessTime(movement1: 0, movement2: 0, totalMovements1: 0, totalMovements2: 0)
     }
     
     func newGame(player1 type1: Chess2D.PlayerType, player2 type2: Chess2D.PlayerType, difficulty: Chess2D.Difficulty){
@@ -80,12 +95,20 @@ class ChessModel: IChessModel, GameDelegate {
     
         game = Game(firstPlayer: player1, secondPlayer: player2)
         game.delegate = self
+        gameDidChangeCurrentPlayer(game: game)
+        chessTime = ChessTime(movement1: 0, movement2: 0, totalMovements1: 0, totalMovements2: 0)
     }
     
     func endGame(){
+        delegate?.chessModelDidUpdateTimeForPlayer(color: .white, time: 0)
+        delegate?.chessModelDidUpdateTimeForPlayer(color: .black, time: 0)
+        delegate?.chessModelDidUpdateTotalTimeForPlayer(color: .white, time: 0)
+        delegate?.chessModelDidUpdateTotalTimeForPlayer(color: .black, time: 0)
         player1 = nil
         player2 = nil
         game = nil
+        timer = nil
+        lastFixedTime = nil
     }
     
     private var blockComputerAsyncNextStep = false
@@ -125,18 +148,28 @@ class ChessModel: IChessModel, GameDelegate {
                 return
             }
             
+            // FIXME: текущая позиция соответствует начальной
             if (piece.tag == 5 || piece.tag == 21){
                 switch newLocation.gridPosition {
                 case .g1, .g8: player.performCastleMove(side: .kingSide)
                 case .c1, .c8: player.performCastleMove(side: .queenSide)
-                default: break
+                default:
+                    // FIXME: скопировано ниже
+                    do {
+                        try player.movePiece(from: currentLocation, to: newLocation)
+                    } catch {
+                        // Когда при шахе в possibleLocations есть неверные возможные ходы
+                        delegate?.chessModelDidMovePiece(tag: piece.tag, to: from, animating: true)
+                    }
                 }
-            }
-            do {
-                try player.movePiece(from: currentLocation, to: newLocation)
-            }catch {
-                // Когда при шахе в possibleLocations есть неверные возможные ходы
-                delegate?.chessModelDidMovePiece(tag: piece.tag, to: from, animating: true)
+            } else {
+                // FIXME: есть копия (выше)
+                do {
+                    try player.movePiece(from: currentLocation, to: newLocation)
+                } catch {
+                    // Когда при шахе в possibleLocations есть неверные возможные ходы
+                    delegate?.chessModelDidMovePiece(tag: piece.tag, to: from, animating: true)
+                }
             }
         }
         
@@ -224,6 +257,36 @@ class ChessModel: IChessModel, GameDelegate {
             delegate?.chessModelDidChangePlayer(currentPlayeColor: .white)
             print("Ходят белые")
         }
+        toggleTiming()
+    }
+    
+    private func observeTiming(){
+        if let lastFixedTime = lastFixedTime {
+            let interval = DateInterval(start: lastFixedTime, end: .init()).duration
+            let color = game.currentPlayer.color! == .white ? Chess2D.Color.white : .black
+            let time = interval + (color == .white ? chessTime.movement1 : chessTime.movement1)
+            let totalTime = interval + (color == .white ? chessTime.totalMovements1 : chessTime.totalMovements2)
+            delegate?.chessModelDidUpdateTimeForPlayer(color: color, time: time)
+            delegate?.chessModelDidUpdateTotalTimeForPlayer(color: color, time: totalTime)
+        }
+    }
+    
+    private func toggleTiming(){
+        if let lastFixedTime = lastFixedTime {
+            let interval = DateInterval(start: lastFixedTime, end: .init()).duration
+            switch game.currentPlayer.color! {
+            case Color.white:
+                chessTime.totalMovements1 += interval
+            case Color.black:
+                chessTime.totalMovements2 += interval
+            }
+        } else {
+            timer = Timer.scheduledTimer(withTimeInterval: 1.0/60.0, repeats: true){ timer in
+                self.observeTiming()
+            }
+        }
+        lastFixedTime = Date()
+        print(chessTime)
     }
     
 }

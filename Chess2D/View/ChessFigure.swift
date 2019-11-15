@@ -119,6 +119,7 @@ class ChessFigure: UIView{
             animator!.removeBehavior(snap!)
         }
         animator = UIDynamicAnimator(referenceView: self.superview!)
+        animator?.delegate = self
         
         attachment = UIAttachmentBehavior(item: self, attachedToAnchor: self.center)
         attachment?.length = 0
@@ -159,7 +160,7 @@ class ChessFigure: UIView{
             let from_location = chessView.getCoordinatesForPosition(point: loastTouchSuperView!)
             let to_location = chessView.getCoordinatesForPosition(point: newPoint)
             presenter.freezeFor(color: color == .white ? .black : .white)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 500000000)){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                 self.animator?.removeAllBehaviors()
                 self.presenter?.makeMove(from: from_location, to: to_location)
             }
@@ -174,6 +175,15 @@ class ChessFigure: UIView{
         circlePath.addArc(withCenter: center, radius: radius, startAngle: CGFloat(Double.pi/2), endAngle: CGFloat(Double.pi), clockwise: true)
         circlePath.close()
         return circlePath
+    }
+    
+}
+
+extension ChessFigure: UIDynamicAnimatorDelegate {
+    
+    func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator){
+        print("dynamicAnimatorDidPause")
+        //self.animator?.removeAllBehaviors()
     }
     
 }

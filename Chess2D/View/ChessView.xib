@@ -13,6 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChessView" customModule="Chess2D" customModuleProvider="target">
             <connections>
                 <outlet property="boardView" destination="pjv-6e-hRx" id="CJi-xB-oeg"/>
+                <outlet property="firstPlayerTimeLabel" destination="6Jy-GD-od7" id="rzR-j5-TQp"/>
+                <outlet property="firstPlayerTotalTimeLabel" destination="uOE-sc-EJR" id="be8-sP-cSq"/>
+                <outlet property="secondPlayerTimeLabel" destination="gwc-i3-6jj" id="3a1-Ac-6ts"/>
+                <outlet property="secondPlayerTotalTimeLabel" destination="bK6-i9-scG" id="3oh-Ri-bDB"/>
                 <outlet property="view" destination="iN0-l3-epB" id="5tg-FL-19j"/>
             </connections>
         </placeholder>
@@ -32,18 +36,18 @@
                     <rect key="frame" x="0.0" y="970" width="834" height="204"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOk-l6-B43">
-                            <rect key="frame" x="693" y="32" width="109" height="54"/>
+                            <rect key="frame" x="675.5" y="32" width="126.5" height="55"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="gwc-i3-6jj">
-                                    <rect key="frame" x="0.0" y="0.0" width="109" height="36"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                    <color key="textColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="126.5" height="35"/>
+                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="30"/>
+                                    <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="bK6-i9-scG">
-                                    <rect key="frame" x="0.0" y="36" width="109" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="0:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="bK6-i9-scG">
+                                    <rect key="frame" x="0.0" y="35" width="126.5" height="20"/>
+                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                                    <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -59,18 +63,18 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qct-ed-qlU">
-                            <rect key="frame" x="552" y="32" width="109" height="54"/>
+                            <rect key="frame" x="517" y="32" width="126.5" height="55"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="6Jy-GD-od7">
-                                    <rect key="frame" x="0.0" y="0.0" width="109" height="36"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                    <color key="textColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="126.5" height="35"/>
+                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="30"/>
+                                    <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="uOE-sc-EJR">
-                                    <rect key="frame" x="0.0" y="36" width="109" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <rect key="frame" x="0.0" y="35" width="126.5" height="20"/>
+                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -86,18 +90,20 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZsW-Ck-hR7">
-                            <rect key="frame" x="32" y="32" width="81" height="30"/>
+                            <rect key="frame" x="32" y="32" width="91" height="30"/>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
                             <state key="normal" title="Новая игра">
-                                <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </state>
                             <connections>
                                 <action selector="newGame:" destination="-1" eventType="touchUpInside" id="jGU-x8-ecc"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="put-8x-T2e">
-                            <rect key="frame" x="145" y="32" width="68" height="30"/>
-                            <state key="normal" title="Очистить">
-                                <color key="titleColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="155" y="32" width="82" height="30"/>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                            <state key="normal" title="Завершить">
+                                <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </state>
                             <connections>
                                 <action selector="clear:" destination="-1" eventType="touchUpInside" id="6fa-3V-41f"/>
@@ -125,6 +131,11 @@
                         <constraint firstItem="put-8x-T2e" firstAttribute="leading" secondItem="ZsW-Ck-hR7" secondAttribute="trailing" constant="32" id="mLb-pb-i4P"/>
                         <constraint firstItem="ZsW-Ck-hR7" firstAttribute="top" secondItem="Qjy-HM-Gpj" secondAttribute="top" constant="32" id="qGI-N2-h2m"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="subviews">
+                            <exclude reference="Ay9-cY-584"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
